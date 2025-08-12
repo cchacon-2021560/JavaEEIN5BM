@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.alanlacan.controlador;
+package Controlador;
 
+import com.alanlacan.modelo.Empleado;
+import com.alanlacan.modelo.EmpleadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author informatica
  */
-public class Controlador extends HttpServlet {
+public class Validar extends HttpServlet {
+
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Empleado empleado = new Empleado();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +39,10 @@ public class Controlador extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
+            out.println("<title>Servlet Validar</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,7 +74,23 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //CAPTURAR LA PETICIONDEL USUARIO A NIVEL DEL SERVIDOR
+        String accion = request.getParameter("accion");
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String email = request.getParameter("txtEmail");
+            String pass = request.getParameter("txtContrasenia");
+            empleado = empleadoDAO.validar(email, pass);
+            if (empleado.getEmailEmpleado() != null) {
+                request.setAttribute("correo", empleado);
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        }
     }
 
     /**

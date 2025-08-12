@@ -26,7 +26,7 @@
         <div class="login-contendor">
             <div class="tabs">
                 <a href="index.jsp">
-                    <button class="activo">Inicio de sesion</button>
+                    <button class="activo" >Inicio de sesion</button>
                 </a>
                 <a href="registrase.jsp">
                     <button class="activo">Registrarse</button>
@@ -36,10 +36,10 @@
             <p>Essenza & Co.</p>
             <p class="subtitulo">Ingresa tus datos para iniciar sesion</p>
 
-            <form action="admin.jsp">
-                <input type="correo" placeholder="Correo" required />
-                <input type="contrasenia" placeholder="Contrasenia" required />
-                <button type="submit" class="boton-brillante">Iniciar Sesión</button>
+            <form method="POST" action="Validar">
+                <input type="correo" placeholder="Correo" name="txtEmail"  />
+                <input type="contrasenia" placeholder="Contrasenia" name="txtContrasenia"  />
+                <button type="submit" class="boton-brillante" name="accion" value="Ingresar">Iniciar Sesión</button>
                 <div class="extras">
                     <label><input type="checkbox" />Recordarme</label>
                     <a href="#">¿Olvidaste la contraseña?</a>
