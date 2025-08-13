@@ -4,8 +4,14 @@ import com.alanlacan.config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.List;
 
 public class EmpleadoDAO {
+
+    private EntityManagerFactory emf;
+    private EntityManager em;
 
     Conexion cn = new Conexion();
     PreparedStatement ps;
@@ -38,12 +44,65 @@ public class EmpleadoDAO {
             e.printStackTrace();
         }
         return empleado; //Empleado Encontrado
+
+    }
+
+    public List listar() {
+        String sql = "CALL sp_listarEmpleados();";
+        List<Empleado> listaEmpleado = new ArrayList<>();
+        try {
+
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Empleado em = new Empleado();
+                em.setCodigoEmpleado(rs.getInt(1));
+                em.setNombreEmpleado(rs.getString(2));
+                em.setApellidoEmpleado(rs.getString(3));
+                em.setDireccionEmpleado(rs.getString(4));
+                em.setTelefonoEmpleado(rs.getString(5));
+                em.setEmailEmpleado(rs.getString(6));
+                em.setPuestoEmpleado(rs.getString(7));
+                //atributos Empleado
+                listaEmpleado.add(em);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaEmpleado;
+    }
+    
+    //METODO AGREGAR
+    public int agregar(Empleado emp){
+        String sql = "insert into Empleados (nombreEmpleado, apellidoEmpleado, direccionEmpleado, telefonoEmpleado, emailEmpleadog, puestoEmpleado) values (?, ?, ?, ?, ?, ?)";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, emp.getNombreEmpleado());
+            ps.setString(2, emp.getApellidoEmpleado());
+            ps.setString(3, emp.getDireccionEmpleado());
+            ps.setString(4, emp.getTelefonoEmpleado());
+            ps.setString(5, emp.getEmailEmpleado());
+            ps.setString(6, emp.getPuestoEmpleado());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();   
+        }
+        return resp;
     }
 
 }
- 
-/*
-    public void crearEmpleado(Empleado empleado) {
+
+
+/*public EmpleadoDAO()
+         {
+        emf = Persistence.createEntityManagerFactory("dominio"); // Asegúrate que el persistence unit "dominio" esté en persistence.xml
+        em = emf.createEntityManager();
+    }*/
+    
+
+    /*public void crearEmpleado(Empleado empleado) {
         try {
             em.getTransaction().begin();
             em.persist(empleado); 
@@ -79,11 +138,11 @@ public class EmpleadoDAO {
             e.printStackTrace();
         }
     }
+    
     public List<Empleado> listarEmpleado() {
         return em.createQuery("SELECT e From Empleado e", Empleado.class).getResultList();
     }
     public void cerrar() {
         em.close();
         emf.close();
-    }
-}*/
+    }*/

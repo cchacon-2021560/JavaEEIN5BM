@@ -20,7 +20,7 @@
             <li><a href="Controlador?menu=Cliente" target="Contenido" >Clientes</a></li>
             <li><a href="Controlador?menu=Proveedor" target="Contenido">Proveedores</a></li>
             <li><a href="Controlador?menu=Producto" target="Contenido">Productos</a></li>
-            <li><a href="Controlador?menu=Empleado" target="Contenido">Empleados</a></li>
+            <li><a href="Controlador?menu=Empleado&accion=Listar" target="Contenido">Empleados</a></li>
             <li><a href="Controlador?menu=Venta" target="Contenido">Ventas</a></li>
             <li><a href="Controlador?menu=DetalleVenta" target="Contenido">Detalle Ventas</a></li>
             <li><a href="Controlador?menu=Factura" target="Contenido">Facturas</a></li>
@@ -29,8 +29,12 @@
             <li class="avatar">
                 <img src="img/UsuarioAdmin.png" alt="Avatar">
                 <ul class="avatar-menu">
-                    <li><a href="principal.jsp">Cambiar Cuenta</a></li>
-                    <li><a href="index.jsp">Cerrar sesión</a></li>
+                    <li><a href="Controlador?menu=Inventario" target="Contenido">Cambiar Cuenta</a></li>
+                    <li><a href="Controlador?menu=Principal">Cerrar sesión</a></li>
+                    
+                    <li><a href="#">${usuario.usuario}</a></li>
+                    <li><a href="#">cmendez@gmail.com</a></li>
+                    <hr class="dropdown-divider">
                 </ul>
             </li>
         </ul>

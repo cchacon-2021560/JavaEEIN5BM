@@ -4,7 +4,10 @@
  */
 package Controlador;
 
+import com.alanlacan.modelo.Empleado;
+import com.alanlacan.modelo.EmpleadoDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author informatica
  */
 public class Controlador extends HttpServlet {
+    
+    Empleado empleado = new Empleado();
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    int codEmpleado;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,6 +48,40 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("producto.jsp").forward(request, response);         
         
         }else if(menu.equals("Empleado")) {
+            
+            switch (accion) {
+                case "Listar":
+                    List listaEmpleados = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleados);
+                    break;
+                case "Agregar":
+                    String nombre = request.getParameter("txtNombreEmpleado");
+                    String apellido = request.getParameter("txtApellidoEmpleado");
+                    String direccion = request.getParameter("txtDireccionEmpleado");
+                    String telefono = request.getParameter("txtTelefonoEmpleado");
+                    String email = request.getParameter("txtEmailEmpleado");
+                    String puesto = request.getParameter("txtPuestoEmpleado");
+                    empleado.setNombreEmpleado(nombre);
+                    empleado.setApellidoEmpleado(apellido);
+                    empleado.setDireccionEmpleado(direccion);
+                    empleado.setTelefonoEmpleado(telefono);
+                    empleado.setEmailEmpleado(email);
+                    empleado.setPuestoEmpleado(puesto);
+                    empleadoDAO.agregar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+                default:
+                    throw new AssertionError();
+            }
             request.getRequestDispatcher("empleado.jsp").forward(request, response);         
         
         }else if(menu.equals("Venta")) {
@@ -57,6 +98,8 @@ public class Controlador extends HttpServlet {
         
         }else if(menu.equals("DetalleCompra")) {
             request.getRequestDispatcher("detalleCompra.jsp").forward(request, response);         
+        }else if(menu.equals("Inventario")) {
+            request.getRequestDispatcher("principal.jsp").forward(request, response);         
         }
     }
 
