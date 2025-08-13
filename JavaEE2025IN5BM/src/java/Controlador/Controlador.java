@@ -30,7 +30,33 @@ public class Controlador extends HttpServlet {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+             request.getRequestDispatcher("admin.jsp").forward(request, response);
+        }else if(menu.equals("Cliente")) {
+            request.getRequestDispatcher("cliente.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Proveedor")) {
+            request.getRequestDispatcher("proveedor.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Producto")) {
+            request.getRequestDispatcher("producto.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Empleado")) {
+            request.getRequestDispatcher("empleado.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Venta")) {
+            request.getRequestDispatcher("venta.jsp").forward(request, response);         
+        
+        }else if(menu.equals("DetalleVenta")) {
+            request.getRequestDispatcher("detlleventa.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Factura")) {
+            request.getRequestDispatcher("factura.jsp").forward(request, response);         
+        
+        }else if(menu.equals("Compras")) {
+            request.getRequestDispatcher("compras.jsp").forward(request, response);         
+        
+        }else if(menu.equals("DetalleCompra")) {
+            request.getRequestDispatcher("detalleCompra.jsp").forward(request, response);         
         }
     }
 

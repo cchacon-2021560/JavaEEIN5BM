@@ -17,15 +17,15 @@
     
     <nav>
         <ul>
-            <li><a href="cliente.jsp" target="crudFrame">Clientes</a></li>
-            <li><a href="proveedor.jsp" target="crudFrame">Proveedores</a></li>
-            <li><a href="producto.jsp" target="crudFrame">Productos</a></li>
-            <li><a href="empleado.jsp" target="crudFrame">Empleados</a></li>
-            <li><a href="venta.jsp" target="crudFrame">Ventas</a></li>
-            <li><a href="detalleVenta.jsp" target="crudFrame">Detalle Ventas</a></li>
-            <li><a href="factura.jsp" target="crudFrame">Facturas</a></li>
-            <li><a href="compras.jsp" target="crudFrame">Compras</a></li>
-            <li><a href="detalleCompra.jsp" target="crudFrame">Detalle Compras</a></li>
+            <li><a href="Controlador?menu=Cliente" target="Contenido" >Clientes</a></li>
+            <li><a href="Controlador?menu=Proveedor" target="Contenido">Proveedores</a></li>
+            <li><a href="Controlador?menu=Producto" target="Contenido">Productos</a></li>
+            <li><a href="Controlador?menu=Empleado" target="Contenido">Empleados</a></li>
+            <li><a href="Controlador?menu=Venta" target="Contenido">Ventas</a></li>
+            <li><a href="Controlador?menu=DetalleVenta" target="Contenido">Detalle Ventas</a></li>
+            <li><a href="Controlador?menu=Factura" target="Contenido">Facturas</a></li>
+            <li><a href="Controlador?menu=Compras" target="Contenido">Compras</a></li>
+            <li><a href="Controlador?menu=DetalleCompra" target="Contenido">Detalle Compras</a></li>
             <li class="avatar">
                 <img src="img/UsuarioAdmin.png" alt="Avatar">
                 <ul class="avatar-menu">
@@ -39,8 +39,6 @@
         <div class="panel">
             <h2>Bienvenido a la ventana de Administrador</h2>
         </div>
-    
-    <iframe name="crudFrame" width="100%" height="1000" style="border:0;"></iframe>
-
+    <iframe name="Contenido" width="100%" height="1000" style="border:0;"></iframe>
 </body>
 </html>
