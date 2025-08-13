@@ -897,4 +897,7 @@ begin
 		where codigoDetalleCompra = codigoDC;
 end $$
 delimiter ;
--- CRUD TRABAJADO POR Cristopher
+
+select * from Empleados;
+
+select * from Empleados where emailEmpleado = "cmendez@empresa.com" and telefonoEmpleado = "55671234";

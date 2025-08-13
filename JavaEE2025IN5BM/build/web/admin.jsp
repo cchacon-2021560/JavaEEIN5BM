@@ -17,15 +17,15 @@
     
     <nav>
         <ul>
-            <li><a href="cliente.jsp">Clientes</a></li>
-            <li><a href="proveedor.jsp">Proveedores</a></li>
-            <li><a href="producto.jsp">Productos</a></li>
-            <li><a href="empleado.jsp">Empleados</a></li>
-            <li><a href="venta.jsp">Ventas</a></li>
-            <li><a href="detalleVenta.jsp">Detalle Ventas</a></li>
-            <li><a href="factura.jsp">Facturas</a></li>
-            <li><a href="compras.jsp">Compras</a></li>
-            <li><a href="detalleCompra.jsp">Detalle Compras</a></li>
+            <li><a href="cliente.jsp" target="crudFrame">Clientes</a></li>
+            <li><a href="proveedor.jsp" target="crudFrame">Proveedores</a></li>
+            <li><a href="producto.jsp" target="crudFrame">Productos</a></li>
+            <li><a href="empleado.jsp" target="crudFrame">Empleados</a></li>
+            <li><a href="venta.jsp" target="crudFrame">Ventas</a></li>
+            <li><a href="detalleVenta.jsp" target="crudFrame">Detalle Ventas</a></li>
+            <li><a href="factura.jsp" target="crudFrame">Facturas</a></li>
+            <li><a href="compras.jsp" target="crudFrame">Compras</a></li>
+            <li><a href="detalleCompra.jsp" target="crudFrame">Detalle Compras</a></li>
             <li class="avatar">
                 <img src="img/UsuarioAdmin.png" alt="Avatar">
                 <ul class="avatar-menu">
